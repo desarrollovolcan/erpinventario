@@ -9,19 +9,18 @@ class DashboardController extends Controller
 {
     public function index(): void
     {
-        if (!Auth::check()) {
-            $this->redirect('/login');
-            return;
-        }
+        Auth::requireLogin();
         $dashboard = new Dashboard();
         $user = Auth::user();
 
         $this->view('dashboard/index', [
             'user' => $user,
             'stats' => $dashboard->getSalesSummary(),
+            'counters' => $dashboard->getCounters(),
             'topProducts' => $dashboard->getTopProducts(),
             'alerts' => $dashboard->getAlerts(),
             'inventoryMovements' => $dashboard->getRecentMovements(),
+            'salesTrend' => $dashboard->getSalesByDay(),
         ]);
     }
 }

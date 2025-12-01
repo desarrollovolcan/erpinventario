@@ -5,7 +5,7 @@ class Controller
 {
     protected array $data = [];
 
-    protected function view(string $template, array $data = []): void
+    protected function view(string $template, array $data = [], string $layout = 'main'): void
     {
         $this->data = $data;
         $viewPath = __DIR__ . '/../views/' . $template . '.php';
@@ -14,8 +14,14 @@ class Controller
             echo "Vista no encontrada";
             return;
         }
+
         extract($data);
-        include __DIR__ . '/../views/layouts/main.php';
+        $layoutPath = __DIR__ . '/../views/layouts/' . $layout . '.php';
+        if (file_exists($layoutPath)) {
+            include $layoutPath;
+        } else {
+            include $viewPath;
+        }
     }
 
     protected function redirect(string $path): void

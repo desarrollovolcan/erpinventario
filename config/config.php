@@ -5,5 +5,7 @@ return [
     'timezone' => 'America/Santiago',
     'currency' => 'CLP',
     'tax_default' => 0.19,
-    'session_name' => 'erp_session'
+    'session_name' => 'erp_session',
+    'app_key' => 'change_this_secret_key',
+    'remember_cookie_name' => 'erp_remember',
 ];
