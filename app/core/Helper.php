@@ -14,6 +14,17 @@ class Helper
         return $current === $path ? 'active' : '';
     }
 
+    public static function isActivePrefix(array $paths): string
+    {
+        $current = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+        foreach ($paths as $path) {
+            if (str_starts_with($current, $path)) {
+                return 'active';
+            }
+        }
+        return '';
+    }
+
     public static function currentPath(): string
     {
         return parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';

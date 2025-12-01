@@ -13,7 +13,7 @@ Aplicación ERP simplificada para inventario, ventas y compras construída en PH
 3. Configurar virtual host/Apache para que el DocumentRoot sea la carpeta `public`.
 4. Ajustar opciones en `config/config.php`.
 
-Usuario demo: `admin@example.com` / contraseña `admin123`.
+Usuario demo: `admin@erp.test` / contraseña `admin123`.
 
 ## Estructura
 - `public/` front controller y assets.

@@ -23,6 +23,12 @@ class Router
         $this->publicPaths = $paths;
     }
 
+    public function match(string $path, array $handler): void
+    {
+        $this->get($path, $handler);
+        $this->post($path, $handler);
+    }
+
     public function dispatch(string $uri, string $method): void
     {
         $path = parse_url($uri, PHP_URL_PATH) ?: '/';

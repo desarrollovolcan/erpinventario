@@ -10,7 +10,9 @@ CREATE TABLE users (
     email VARCHAR(120) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     role_id INT NOT NULL,
+    status TINYINT(1) DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
@@ -190,6 +192,19 @@ CREATE TABLE expenses (
     FOREIGN KEY (warehouse_id) REFERENCES warehouses(id)
 );
 
+CREATE TABLE cash_sessions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    warehouse_id INT NOT NULL,
+    opened_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    closed_at DATETIME NULL,
+    opening_amount DECIMAL(12,2) DEFAULT 0,
+    closing_amount DECIMAL(12,2) DEFAULT 0,
+    status VARCHAR(20) DEFAULT 'open',
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (warehouse_id) REFERENCES warehouses(id)
+);
+
 CREATE OR REPLACE VIEW product_stock_view AS
 SELECT
     p.id,
@@ -207,8 +222,8 @@ INSERT INTO roles (name, slug) VALUES
 ('Bodeguero', 'bodeguero'),
 ('Supervisor/Contador', 'supervisor');
 
-INSERT INTO users (name, email, password_hash, role_id) VALUES
-('Administrador', 'admin@example.com', '$2y$12$8/bT07/RBofy/jVofKD0p.DbbAfYmosVjWl6qOdKYnq2fPeu.2xA.', 1);
+INSERT INTO users (name, email, password_hash, role_id, status) VALUES
+('Administrador', 'admin@erp.test', '$2y$12$xOIjeJSBeFEfXnDsh7R.x.D7A8AIGRHqw/cy51k0aKbWQuhjMzVnq', 1, 1);
 
 INSERT INTO warehouses (name, address) VALUES
 ('Local 1', 'Calle Principal 123'),
@@ -251,3 +266,10 @@ INSERT INTO sale_details (sale_id, product_id, quantity, price, discount, tax) V
 
 INSERT INTO accounts_receivable (customer_id, sale_id, amount, balance, due_date) VALUES
 (1, 1, 15000, 5000, DATE_SUB(CURDATE(), INTERVAL 3 DAY));
+
+INSERT INTO cash_sessions (user_id, warehouse_id, opened_at, opening_amount, status) VALUES
+(1, 1, NOW(), 50000, 'open');
+
+INSERT INTO expenses (user_id, warehouse_id, type, amount, payment_method, notes) VALUES
+(1, 1, 'Servicios', 12000, 'transferencia', 'Pago de luz'),
+(1, 1, 'Gastos menores', 8000, 'efectivo', 'Reposición insumos');

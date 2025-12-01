@@ -35,26 +35,26 @@ $user = Auth::user();
                 <i class="bi bi-speedometer2 me-2"></i> Dashboard
             </a>
             <div class="px-3 mt-3 text-uppercase text-muted small fw-semibold">Ventas</div>
-            <a class="nav-link px-3" href="/ventas/pos"><i class="bi bi-cash-register me-2"></i> POS</a>
-            <a class="nav-link px-3" href="/ventas"><i class="bi bi-receipt me-2"></i> Ventas</a>
-            <a class="nav-link px-3" href="/ventas/cotizaciones"><i class="bi bi-file-earmark-text me-2"></i> Cotizaciones</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/ventas/pos']) ?>" href="/ventas/pos"><i class="bi bi-cash-register me-2"></i> POS</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/ventas']) ?>" href="/ventas"><i class="bi bi-receipt me-2"></i> Ventas</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/ventas/cotizaciones']) ?>" href="/ventas/cotizaciones"><i class="bi bi-file-earmark-text me-2"></i> Cotizaciones</a>
             <div class="px-3 mt-3 text-uppercase text-muted small fw-semibold">Inventario</div>
-            <a class="nav-link px-3" href="/inventario/productos"><i class="bi bi-box-seam me-2"></i> Productos</a>
-            <a class="nav-link px-3" href="/inventario"><i class="bi bi-arrow-left-right me-2"></i> Movimientos</a>
-            <a class="nav-link px-3" href="/bodegas"><i class="bi bi-buildings me-2"></i> Bodegas</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/inventario/productos','/productos']) ?>" href="/inventario/productos"><i class="bi bi-box-seam me-2"></i> Productos</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/inventario']) ?>" href="/inventario"><i class="bi bi-arrow-left-right me-2"></i> Movimientos</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/bodegas']) ?>" href="/bodegas"><i class="bi bi-buildings me-2"></i> Bodegas</a>
             <div class="px-3 mt-3 text-uppercase text-muted small fw-semibold">Compras</div>
-            <a class="nav-link px-3" href="/proveedores"><i class="bi bi-truck me-2"></i> Proveedores</a>
-            <a class="nav-link px-3" href="/compras"><i class="bi bi-bag-check me-2"></i> Compras</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/proveedores']) ?>" href="/proveedores"><i class="bi bi-truck me-2"></i> Proveedores</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/compras']) ?>" href="/compras"><i class="bi bi-bag-check me-2"></i> Compras</a>
             <div class="px-3 mt-3 text-uppercase text-muted small fw-semibold">Clientes y créditos</div>
-            <a class="nav-link px-3" href="/clientes"><i class="bi bi-people me-2"></i> Clientes</a>
-            <a class="nav-link px-3" href="/cobranzas"><i class="bi bi-clipboard-data me-2"></i> Cuentas por cobrar</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/clientes']) ?>" href="/clientes"><i class="bi bi-people me-2"></i> Clientes</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/cobranzas']) ?>" href="/cobranzas"><i class="bi bi-clipboard-data me-2"></i> Cuentas por cobrar</a>
             <div class="px-3 mt-3 text-uppercase text-muted small fw-semibold">Finanzas</div>
-            <a class="nav-link px-3" href="/cajas"><i class="bi bi-safe me-2"></i> Cajas</a>
-            <a class="nav-link px-3" href="/gastos"><i class="bi bi-cash-coin me-2"></i> Gastos</a>
-            <a class="nav-link px-3" href="/cierres"><i class="bi bi-journal-check me-2"></i> Cierres</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/cajas']) ?>" href="/cajas"><i class="bi bi-safe me-2"></i> Cajas</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/gastos']) ?>" href="/gastos"><i class="bi bi-cash-coin me-2"></i> Gastos</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/cierres']) ?>" href="/cierres"><i class="bi bi-journal-check me-2"></i> Cierres</a>
             <div class="px-3 mt-3 text-uppercase text-muted small fw-semibold">Configuración</div>
-            <a class="nav-link px-3" href="/usuarios"><i class="bi bi-shield-lock me-2"></i> Usuarios</a>
-            <a class="nav-link px-3" href="/parametros"><i class="bi bi-gear me-2"></i> Parámetros</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/usuarios']) ?>" href="/usuarios"><i class="bi bi-shield-lock me-2"></i> Usuarios</a>
+            <a class="nav-link px-3 <?php echo Helper::isActivePrefix(['/parametros']) ?>" href="/parametros"><i class="bi bi-gear me-2"></i> Parámetros</a>
         </nav>
     </aside>
 
